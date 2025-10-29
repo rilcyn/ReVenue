@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>ReVenue — Turn downtime into income</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><img src="assets/logo.svg" alt="ReVenue logo"/><span class="badge">Turn downtime into income</span></div>
+      <span class="badge">Demo</span>
+    </div>
+  </div>
+  <header class="hero">
+    <div class="hero-inner container">
+      <h1>ReVenue — <span style="color:#FF7A3D">rent space + equipment after hours</span></h1>
+      <p>Smart access, embedded insurance, AI scheduling, and analytics — all in one platform.</p>
+      <div class="filters">
+        <input id="search" class="input" placeholder="Search by equipment or name (e.g., mixer, 3D printer)"/>
+        <select id="type" class="select">
+          <option value="">All types</option>
+          <option>Kitchen</option><option>Gym</option><option>Photo Studio</option><option>Makerspace</option><option>Office</option><option>Retail</option>
+        </select>
+        <select id="city" class="select">
+          <option value="">All cities</option>
+          <option>Hoboken, NJ</option><option>Jersey City, NJ</option><option>Newark, NJ</option><option>Bayonne, NJ</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:10px">
+        <div class="kpi"><span>Total earned</span><b id="statRevenue">$12,480</b></div>
+        <div class="kpi"><span>Hours unlocked</span><b id="statHours">382 hrs</b></div>
+        <div class="kpi"><span>Spaces</span><b id="statSpaces">0</b></div>
+      </div>
+    </div>
+    <div id="spark" class="spark"></div>
+  </header>
+  <main class="container">
+    <section id="section-home" class="section active">
+      <h2>Explore spaces</h2>
+      <div id="cards" class="cards"></div>
+    </section>
+    <section id="section-detail" class="section">
+      <div class="detail">
+        <div class="card">
+          <img id="dImg" src="" alt="" />
+          <div class="card-body">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div><div id="dName" style="font-size:20px;font-weight:800"></div><div id="dMeta" class="small"></div></div>
+              <div style="text-align:right"><div id="dPrice" style="font-weight:800"></div><div id="dOff" class="small"></div><div id="dIns" class="small"></div></div>
+            </div>
+            <div style="margin-top:8px"><div class="small">Recommended idle slots</div><div id="pred" style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"></div></div>
+            <div style="margin-top:8px"><div class="small">Equipment</div><div id="dEquip" style="display:flex;gap:8px;flex-direction:column;margin-top:6px"></div></div>
+            <div><div class="small">House Rules</div><ul id="dRules" style="margin:6px 0 0 18px"></ul></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div style="font-weight:800;margin-bottom:6px">Book this space</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div><div class="small">Date</div><input id="date" type="date" class="input"/></div>
+              <div><div class="small">People</div><input id="people" type="number" class="input" value="2" min="1"/></div>
+              <div><div class="small">Start</div><input id="start" type="time" class="input" value="21:00"/></div>
+              <div><div class="small">End</div><input id="end" type="time" class="input" value="23:00"/></div>
+              <label style="display:flex;align-items:center;gap:10px;grid-column:1/-1"><input id="insurance" type="checkbox"/> <span class="small">Add partner insurance</span></label>
+            </div>
+            <div id="quote" style="display:flex;flex-direction:column;gap:8px;margin:10px 0"></div>
+            <div style="display:flex;gap:8px">
+              <button id="bookBtn" class="btn btn-primary">Pay & Generate Contract</button>
+              <button class="btn" id="connectIoT">Connect IoT Lock</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="section-dashboard" class="section">
+      <h2>Host Dashboard</h2>
+      <div class="card" style="padding:12px">
+        <div id="bookings"></div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:10px">
+          <canvas id="revChart" width="360" height="120" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px"></canvas>
+          <canvas id="hrsChart" width="360" height="120" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px"></canvas>
+        </div>
+      </div>
+    </section>
+    <section id="section-host" class="section">
+      <h2>List your space</h2>
+      <form id="hostForm" class="card" style="padding:12px;display:grid;gap:10px">
+        <div><div class="small">Space name</div><input class="input" name="name" required placeholder="Sunset Test Kitchen"/></div>
+        <div><div class="small">City</div><input class="input" name="city" required placeholder="City, State"/></div>
+        <div><div class="small">Type</div>
+          <select class="select" name="type" required>
+            <option>Kitchen</option><option>Gym</option><option>Photo Studio</option><option>Makerspace</option><option>Office</option><option>Retail</option>
+          </select>
+        </div>
+        <div><div class="small">Hourly price ($)</div><input class="input" name="price" type="number" min="10" step="1" value="30"/></div>
+        <div><div class="small">Equipment (comma-separated)</div><input class="input" name="equipment" placeholder="Oven, Mixer, ..."/></div>
+        <div><div class="small">House rules (comma-separated)</div><input class="input" name="rules" placeholder="Sanitize, No pets, ..."/></div>
+        <div><div class="small">Off-hours window</div><input class="input" name="offhours" placeholder="8:00 PM – 5:00 AM"/></div>
+        <div><div class="small">Host/Company</div><input class="input" name="host" placeholder="Your LLC"/></div>
+        <label style="display:flex;align-items:center;gap:10px"><input type="checkbox" name="insreq"/> <span class="small">Require renter insurance</span></label>
+        <button class="btn btn-primary" type="submit">Publish listing</button>
+      </form>
+      <div class="card" style="padding:12px;margin-top:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><b>Enterprise Partnerships</b><div class="small">Bulk upload via CSV/API</div></div>
+          <button id="bulkBtn" class="btn">Upload sample CSV</button>
+        </div>
+      </div>
+    </section>
+    <section id="section-pass" class="section">
+      <h2>ReVenue Pass</h2>
+      <div class="card" style="padding:12px">
+        <p>Unlock multi-space access with discounted rates. Choose a tier and get verified access to partner facilities.</p>
+        <ul><li>Starter: 10% off first 10 hours</li><li>Plus: 15% off + priority slots</li><li>Pro: 20% off + premium insurance bundle</li></ul>
+        <button id="subscribeBtn" class="btn btn-primary">Activate Plus (demo)</button>
+      </div>
+    </section>
+    <section id="section-admin" class="section">
+      <h2>Admin — Trust & Safety</h2>
+      <div class="card" style="padding:12px">
+        <ul><li>Approve listings and verify licenses</li><li>Manage insurance claims (simulated)</li><li>Monitor utilization and revenue across partners</li></ul>
+      </div>
+    </section>
+  </main>
+  <nav id="tabs" class="tabs">
+    <button class="tab-btn active" data-section="home">Explore</button>
+    <button class="tab-btn" data-section="dashboard">Dashboard</button>
+    <button class="tab-btn" data-section="host">List</button>
+    <button class="tab-btn" data-section="pass">Pass</button>
+    <button class="tab-btn" data-section="admin">Admin</button>
+  </nav>
+  <div id="pay" class="backdrop">
+    <div class="modal">
+      <div class="modal-header"><div>Checkout — ReVenue</div><button id="closePay" class="btn">✕</button></div>
+      <div class="modal-body">
+        <div id="paySummary"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div><div class="small">Card number</div><input class="input" placeholder="4242 4242 4242 4242"/></div>
+          <div><div class="small">Expiry / CVC</div><input class="input" placeholder="12/28 • 123"/></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><div>Total</div><div id="payTotal" style="font-weight:800"></div></div>
+        <button id="confirmPay" class="btn btn-primary">Confirm & Generate Contract</button>
+        <div class="small">Test mode — no real charges.</div>
+      </div>
+    </div>
+  </div>
+  <div id="contract" class="backdrop">
+    <div class="modal">
+      <div class="modal-header"><div>License Agreement</div><button id="closeContract" class="btn">✕</button></div>
+      <div class="modal-body">
+        <div id="contractText"></div>
+        <div style="display:flex;gap:8px;margin-top:6px"><button id="signContract" class="btn btn-primary">Sign</button><button class="btn" onclick="document.getElementById('contract').style.display='none'">Close</button></div>
+        <div class="small">By clicking “Sign”, you accept the ReVenue License Terms.</div>
+      </div>
+    </div>
+  </div>
+  <footer class="container">© 2025 ReVenue — demo prototype.</footer>
+  <script src="script.js"></script>
+</body>
+</html>

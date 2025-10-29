@@ -1,0 +1,210 @@
+[
+  {
+    "id": "kitch-1",
+    "name": "Midnight Commissary",
+    "type": "Kitchen",
+    "city": "Hoboken, NJ",
+    "price_hr": 48,
+    "util": 34,
+    "verified": true,
+    "rating": 4.9,
+    "offhours": "8:00 PM \u2013 5:00 AM",
+    "img": "assets/ph_1.svg",
+    "host": "Rosa\u2019s Foods LLC",
+    "equipment": [
+      {
+        "name": "Convection oven",
+        "rate": 6
+      },
+      {
+        "name": "6-burner range",
+        "rate": 4
+      },
+      {
+        "name": "Mixer",
+        "rate": 5
+      },
+      {
+        "name": "Walk-in fridge",
+        "rate": 3
+      }
+    ],
+    "rules": [
+      "Sanitize surfaces",
+      "No deep frying after 1am",
+      "BYO containers"
+    ],
+    "insurance_required": true
+  },
+  {
+    "id": "gym-1",
+    "name": "IronTemple Studio",
+    "type": "Gym",
+    "city": "Jersey City, NJ",
+    "price_hr": 35,
+    "util": 22,
+    "verified": true,
+    "rating": 4.8,
+    "offhours": "9:00 PM \u2013 6:00 AM",
+    "img": "assets/ph_2.svg",
+    "host": "IronTemple LLC",
+    "equipment": [
+      {
+        "name": "Power rack",
+        "rate": 3
+      },
+      {
+        "name": "Barbells set",
+        "rate": 2
+      },
+      {
+        "name": "Kettlebells",
+        "rate": 1
+      },
+      {
+        "name": "Rower",
+        "rate": 2
+      }
+    ],
+    "rules": [
+      "No chalk on floor",
+      "Re-rack weights",
+      "Music < 85 dB"
+    ],
+    "insurance_required": true
+  },
+  {
+    "id": "studio-1",
+    "name": "Canvas Lightbox",
+    "type": "Photo Studio",
+    "city": "Newark, NJ",
+    "price_hr": 28,
+    "util": 41,
+    "verified": true,
+    "rating": 4.7,
+    "offhours": "7:00 PM \u2013 7:00 AM",
+    "img": "assets/ph_3.svg",
+    "host": "CLX Studios",
+    "equipment": [
+      {
+        "name": "C-stands",
+        "rate": 2
+      },
+      {
+        "name": "Softboxes",
+        "rate": 3
+      },
+      {
+        "name": "Backdrop system",
+        "rate": 2
+      },
+      {
+        "name": "Tripod kit",
+        "rate": 1
+      }
+    ],
+    "rules": [
+      "No glitter/confetti",
+      "Protect cyc wall",
+      "No smoke without approval"
+    ],
+    "insurance_required": false
+  },
+  {
+    "id": "maker-1",
+    "name": "HarborWorks Loft",
+    "type": "Makerspace",
+    "city": "Bayonne, NJ",
+    "price_hr": 32,
+    "util": 18,
+    "verified": false,
+    "rating": 4.6,
+    "offhours": "6:30 PM \u2013 8:00 AM",
+    "img": "assets/ph_4.svg",
+    "host": "HarborWorks",
+    "equipment": [
+      {
+        "name": "3D printer",
+        "rate": 5
+      },
+      {
+        "name": "Laser cutter",
+        "rate": 8
+      },
+      {
+        "name": "Solder bench",
+        "rate": 2
+      }
+    ],
+    "rules": [
+      "Wear PPE",
+      "No unsupervised laser",
+      "Clean bench post-use"
+    ],
+    "insurance_required": true
+  },
+  {
+    "id": "office-1",
+    "name": "Harbor Office Suite",
+    "type": "Office",
+    "city": "Hoboken, NJ",
+    "price_hr": 18,
+    "util": 25,
+    "verified": true,
+    "rating": 4.5,
+    "offhours": "6:00 PM \u2013 7:00 AM",
+    "img": "assets/ph_5.svg",
+    "host": "Seaview Properties",
+    "equipment": [
+      {
+        "name": "Conference room",
+        "rate": 4
+      },
+      {
+        "name": "Projector",
+        "rate": 2
+      },
+      {
+        "name": "Printer",
+        "rate": 1
+      }
+    ],
+    "rules": [
+      "Respect quiet hours",
+      "No outside visitors without booking"
+    ],
+    "insurance_required": false
+  },
+  {
+    "id": "retail-1",
+    "name": "PopLab Showroom",
+    "type": "Retail",
+    "city": "Jersey City, NJ",
+    "price_hr": 24,
+    "util": 12,
+    "verified": true,
+    "rating": 4.6,
+    "offhours": "7:00 PM \u2013 9:00 AM",
+    "img": "assets/ph_6.svg",
+    "host": "PopLab",
+    "equipment": [
+      {
+        "name": "POS terminal",
+        "rate": 2
+      },
+      {
+        "name": "Display racks",
+        "rate": 1
+      },
+      {
+        "name": "Lightbox sign",
+        "rate": 1
+      }
+    ],
+    "rules": [
+      "No permanent fixtures",
+      "Leave no trace"
+    ],
+    "insurance_required": false
+  }
+]
